@@ -5,34 +5,40 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        double a;
-        double b;
-        double c;
-        
-       
-
-        calcolo(a, b, c);
-
-        
-
-
-
+        programma();
     }
 
-    public static void assegnazione()
+    public static void programma()
     {
-        Console.WriteLine("Ciao, risolverò la tua equazione di secondo grado! \nPer iniziare inserisci il valore di a" +
-    ".\nP.S.: la forma è aX^ + bX + c = 0");
-        string input = Console.ReadLine();
-        a = double.Parse(input);
+        inizio();
+        restart();
+    }
 
-        Console.WriteLine("Ora inserisci il valore di b");
-        input = Console.ReadLine();
-        b = double.Parse(input);
+    public static void restart()
+    {
+        Console.WriteLine("Premi il tasto 0 se vuoi risolvere un'altra operazione, altrimenti un tasto qualsiasi.");
+        string restart = Console.ReadLine();
+        if (restart != null && restart.Equals("0"))
+        {
+            programma();
+        }
+    }
 
-        Console.WriteLine("E infine il valore di c");
-        input = Console.ReadLine();
-        c = double.Parse(input);
+    public static void inizio()
+    {
+        Console.WriteLine("Sono in grado di risolvere le equazioni di secondo grado! \nLa forma è aX^ + bX + c = 0");
+        double a = assegnazione("Inserisci il valore di a");
+        double b = assegnazione("Inserisci il valore di b");
+        double c = assegnazione("Inserisci il valore di c");
+
+        calcolo(a, b, c);
+    }
+
+    public static double assegnazione(string frase)
+    {
+        Console.WriteLine(frase);
+        string valore = Console.ReadLine();
+        return double.Parse(valore);
     }
     public static void calcolo(double a, double b, double c)
     {
